@@ -11,8 +11,8 @@ export const MOCK_CREDENTIALS = {
 
 const MOCK_USER: AuthUser = {
   email: 'admin@lendsqr.com',
-  name: 'Admin',
-  avatar: 'https://ui-avatars.com/api/?name=Admin&background=213F7D&color=fff&size=128',
+  name: 'Adedeji',
+  avatar: 'https://ui-avatars.com/api/?name=Adedeji&background=213F7D&color=fff&size=128',
 }
 
 export function mockLogin(email: string, password: string): { success: true; user: AuthUser } | { success: false; error: string } {
