@@ -78,7 +78,12 @@ export default function LoginPage() {
               {showPassword ? 'HIDE' : 'SHOW'}
             </button>
           </div>
-          {error && <p className={styles.error}>{error}</p>}
+          {error && (
+            <div className={styles.errorWrap}>
+              <p className={styles.error}>{error}</p>
+              <p className={styles.hint}>Test credentials: admin@lendsqr.com / password123</p>
+            </div>
+          )}
           <a href="#" className={styles.forgot} onClick={e => e.preventDefault()}>FORGOT PASSWORD?</a>
           <button type="submit" className={styles.submit} disabled={loading}>
             {loading ? 'LOGGING IN...' : 'LOG IN'}
