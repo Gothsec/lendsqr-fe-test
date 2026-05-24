@@ -1,0 +1,59 @@
+.container {
+  padding: 2rem;
+}
+
+.heading {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+.card {
+  background: var(--color-white);
+  border-radius: 4px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.users {
+  background: var(--color-bg-stat-users);
+}
+
+.active {
+  background: var(--color-bg-stat-active);
+}
+
+.loans {
+  background: var(--color-bg-stat-loans);
+}
+
+.savings {
+  background: var(--color-bg-stat-savings);
+}
+
+.label {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+.value {
+  font-size: var(--font-size-xl);
+  color: var(--color-primary);
+  font-weight: var(--font-weight-bold);
+}

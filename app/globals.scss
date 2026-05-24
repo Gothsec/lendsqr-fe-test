@@ -1,17 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-primary: #213F7D;
+  --color-secondary: #545F7D;
+  --color-accent: #39CDCC;
+  --color-white: #FFFFFF;
+
+  --color-status-active: #39CD62;
+  --color-status-pending: #E9B200;
+  --color-status-blacklisted: #E4033B;
+  --color-status-inactive: #545F7D;
+
+  --color-stat-users: #DF18FF;
+  --color-stat-active: #5718FF;
+  --color-stat-loans: #F55F44;
+  --color-stat-savings: #FF3366;
+
+  --color-bg-stat-users: rgba(223, 24, 255, 0.1);
+  --color-bg-stat-active: rgba(87, 24, 255, 0.1);
+  --color-bg-stat-loans: rgba(245, 95, 68, 0.1);
+  --color-bg-stat-savings: rgba(255, 51, 102, 0.1);
+
+  --color-text-primary: #213F7D;
+  --color-text-secondary: #545F7D;
+  --color-text-body: #333333;
+  --color-border: #E0E0E0;
+  --color-bg-sidebar: #FFFFFF;
+  --color-bg-main: #F5F6FA;
+
+  --font-family: 'Work Sans', sans-serif;
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-base: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-family);
+  color: var(--color-text-body);
+  background-color: var(--color-bg-main);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
