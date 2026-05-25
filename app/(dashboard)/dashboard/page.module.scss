@@ -6,6 +6,7 @@
   font-size: var(--font-size-xl);
   color: var(--color-primary);
   margin-bottom: 2rem;
+  font-weight: var(--font-weight-medium);
 }
 
 .grid {
@@ -28,6 +29,9 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .users {
