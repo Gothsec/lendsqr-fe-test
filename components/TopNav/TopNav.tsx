@@ -10,7 +10,12 @@ export default function TopNav() {
   const { user, logout } = useAuth()
   const router = useRouter()
   const [open, setOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {
@@ -52,14 +57,16 @@ export default function TopNav() {
         </button>
 
         <div className={styles.userWrap} ref={ref}>
-          <Image
-            src={user?.avatar || ''}
-            alt={user?.name || ''}
-            width={48}
-            height={48}
-            className={styles.avatar}
-          />
-          <span className={styles.userName} onClick={() => setOpen(v => !v)}>{user?.name}</span>
+          {mounted && user?.avatar && (
+            <img
+              src={user.avatar}
+              alt={user.name || ''}
+              width={48}
+              height={48}
+              className={styles.avatar}
+            />
+          )}
+          <span className={styles.userName} onClick={() => setOpen(v => !v)}>{mounted ? user?.name : ''}</span>
           <button
             className={styles.dropdownBtn}
             type="button"

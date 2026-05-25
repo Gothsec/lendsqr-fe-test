@@ -17,8 +17,6 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     }
   }, [isAuthenticated, router])
 
-  if (!isAuthenticated) return null
-
   return (
     <div className={styles.wrap}>
       <TopNav />
