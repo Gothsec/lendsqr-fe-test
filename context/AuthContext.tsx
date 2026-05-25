@@ -17,25 +17,27 @@ interface AuthContextValue {
 
 const AuthContext = createContext<AuthContextValue | null>(null)
 
-export function AuthProvider({ children }: { children: ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null)
-  const [lastActivity, setLastActivity] = useState<number>(Date.now())
-  const router = useRouter()
-
-  useEffect(() => {
+function readAuthUser(): AuthUser | null {
+  if (typeof window === 'undefined') return null
+  try {
     const stored = localStorage.getItem('auth_user')
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored))
-      } catch {
-        localStorage.removeItem('auth_user')
-      }
-    }
-    const storedActivity = localStorage.getItem('auth_last_activity')
-    if (storedActivity) {
-      setLastActivity(Number(storedActivity))
-    }
-  }, [])
+    return stored ? JSON.parse(stored) : null
+  } catch {
+    localStorage.removeItem('auth_user')
+    return null
+  }
+}
+
+function readLastActivity(): number {
+  if (typeof window === 'undefined') return Date.now()
+  const stored = localStorage.getItem('auth_last_activity')
+  return stored ? Number(stored) : Date.now()
+}
+
+export function AuthProvider({ children }: { children: ReactNode }) {
+  const [user, setUser] = useState<AuthUser | null>(readAuthUser)
+  const [lastActivity, setLastActivity] = useState<number>(readLastActivity)
+  const router = useRouter()
 
   useEffect(() => {
     function handleActivity() {
