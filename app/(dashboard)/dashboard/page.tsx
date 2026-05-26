@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { getDashboardStats } from '@/lib/data'
 import styles from './page.module.scss'
 
@@ -14,16 +13,7 @@ const cards = [
 export default function DashboardPage() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.heading}>Users</h1>
-      <div className={styles.grid}>
-        {cards.map(card => (
-          <div key={card.label} className={styles.card}>
-            <Image src={card.icon} alt="" width={40} height={40} />
-            <span className={styles.label}>{card.label}</span>
-            <span className={styles.value}>{card.value.toLocaleString()}</span>
-          </div>
-        ))}
-      </div>
+      <h1 className={styles.heading}>Dashboard</h1>
     </div>
   )
 }
