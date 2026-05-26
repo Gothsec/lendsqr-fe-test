@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { getDashboardStats } from '@/lib/data'
 import styles from './page.module.scss'
 
