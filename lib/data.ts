@@ -28,3 +28,18 @@ export function getDashboardStats() {
 
   return { totalUsers: total, activeUsers: active, usersWithLoans: withLoans, usersWithSavings: withSavings }
 }
+
+export function getStatusDistribution() {
+  return {
+    active: users.filter(u => u.status === 'active').length,
+    pending: users.filter(u => u.status === 'pending').length,
+    inactive: users.filter(u => u.status === 'inactive').length,
+    blacklisted: users.filter(u => u.status === 'blacklisted').length,
+  }
+}
+
+export function getRecentUsers(count: number = 8): User[] {
+  return [...users]
+    .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime())
+    .slice(0, count)
+}
