@@ -46,7 +46,7 @@ function NavIcon({ src }: { src: string }) {
   return <Image src={`/sidebar-icons/${src}`} alt="" width={16} height={16} className={styles.icon} />
 }
 
-export default function SideNav() {
+export default function SideNav({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
   const pathname = usePathname()
   const router = useRouter()
   const { logout } = useAuth()
@@ -65,8 +65,16 @@ export default function SideNav() {
   const linkClass = (cond: boolean) => `${styles.navItem} ${cond ? styles.active : ''}`.trim()
 
   return (
-    <aside className={styles.sidebar}>
-      <button className={styles.switchOrg} onClick={() => setOrgOpen(v => !v)} type="button">
+    <>
+      <div className={`${styles.overlay} ${isOpen ? styles.overlayVisible : ''}`} onClick={onClose} />
+      <aside className={`${styles.sidebar} ${isOpen ? styles.sidebarOpen : ''}`}>
+        <button className={styles.closeBtn} onClick={onClose} type="button" aria-label="Close navigation">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+          </svg>
+        </button>
+
+        <button className={styles.switchOrg} onClick={() => setOrgOpen(v => !v)} type="button">
         <Image src="/sidebar-icons/briefcase-1.svg" alt="" width={16} height={16} className={styles.icon} />
         <span className={styles.switchOrgLabel}>Switch Organization</span>
         <svg className={`${styles.arrow} ${orgOpen ? styles.arrowUp : ''}`} width="10" height="6" viewBox="0 0 10 6" fill="none">
@@ -127,5 +135,6 @@ export default function SideNav() {
 
       <div className={styles.version}>v1.2.0</div>
     </aside>
+    </>
   )
 }

@@ -9,6 +9,7 @@
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.02);
   display: flex;
   flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
   &::-webkit-scrollbar {
     width: 4px;
@@ -22,6 +23,14 @@
     background: rgba(33, 63, 125, 0.15);
     border-radius: 2px;
   }
+}
+
+.overlay {
+  display: none;
+}
+
+.closeBtn {
+  display: none;
 }
 
 .icon {
@@ -144,6 +153,55 @@
 
 @media (max-width: 768px) {
   .sidebar {
-    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 200;
+    height: 100dvh;
+    padding-top: 1rem;
+    transform: translateX(-100%);
+    box-shadow: none;
+
+    &.sidebarOpen {
+      transform: translateX(0);
+      box-shadow: 4px 0 30px rgba(0, 0, 0, 0.15);
+    }
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 190;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+
+    &.overlayVisible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+
+  .closeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    width: 32px;
+    height: 32px;
+    background: rgba(33, 63, 125, 0.06);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--color-primary);
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(33, 63, 125, 0.12);
+    }
   }
 }

@@ -24,6 +24,22 @@
   }
 }
 
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  color: var(--color-primary);
+  outline: none;
+  transition: opacity 0.2s;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
 .searchWrap {
   display: flex;
   align-items: center;
@@ -248,12 +264,18 @@
     gap: 1rem;
   }
 
+  .hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .searchWrap {
-    display: none; /* Hide global search on small mobile viewports */
+    display: none;
   }
 
   .docs {
-    display: none; /* Hide Docs link on mobile, standard practice */
+    display: none;
   }
 
   .notif {
