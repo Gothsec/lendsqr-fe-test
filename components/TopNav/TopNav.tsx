@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation'
 import { useAuth } from '@/context/AuthContext'
 import styles from './TopNav.module.scss'
 
-export default function TopNav() {
+export default function TopNav({ onToggleNav }: { onToggleNav: () => void }) {
   const { user, logout } = useAuth()
   const router = useRouter()
   const [open, setOpen] = useState(false)
@@ -37,6 +37,12 @@ export default function TopNav() {
       <div className={styles.logoWrap}>
         <Image src="/logo.svg" alt="lendsqr" width={144} height={30} priority />
       </div>
+
+      <button className={styles.hamburger} onClick={onToggleNav} type="button" aria-label="Toggle navigation menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+        </svg>
+      </button>
 
       <div className={styles.searchWrap}>
         <input
